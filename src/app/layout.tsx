@@ -1,5 +1,5 @@
-import './globals.css'
-import './animations.css'
+import "@/styles/globals.css"
+import "@/styles/animations.css"
 
 export const metadata = {
   title: 'Assistro',

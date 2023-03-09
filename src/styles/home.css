@@ -1,0 +1,6 @@
+.main-home {
+  height: min(100vh, 100vh);
+  width: min(100vw, 100vw);
+  display:flex;
+  justify-content: center;
+}

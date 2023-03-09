@@ -8,10 +8,10 @@ export default function Home() {
 
       <nav>
         <ul>
-          <li>
+          <li className="p-4 rounded-md border-2 border-l-indigo-300 my-4 bg-white">
             <Link href="/register/teacher">Soy profesor</Link>
           </li>
-          <li>
+          <li className="p-4 rounded-md border-2 border-l-indigo-300 my-4 bg-white">
             <Link href="/register/student">Soy estudiante</Link>
           </li>
         </ul>

@@ -3,10 +3,6 @@
 @tailwind utilities;
 
 :root {
-  --yellow: #f8f9d7;
-  --dark: #20252b;
-  --light-turquoise: #d7e6f9;
-  --violet: #d597fa;
   -webkit-tap-highlight-color: transparent;
 }
 
@@ -22,7 +18,6 @@ html {
 
 body {
   font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
-  background: #f8f9d7;
 }
 
 ul {

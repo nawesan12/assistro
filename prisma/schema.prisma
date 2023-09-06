@@ -3,35 +3,67 @@ generator client {
 }
 
 datasource db {
-  provider = "mysql"
-  url      = env("DATABASE_URL")
+  provider     = "postgresql"
+  url          = env("DATABASE_URL")
   relationMode = "prisma"
 }
 
-model User {
-  id Int @id @default(autoincrement())
-  name String
-  surname String
-  email String
+model Professor {
+  id       Int      @id @default(autoincrement())
+  name     String
+  surname  String
+  email    String
   password String
-  role Role @default(STUDENT) 
+  Course   Course[]
 }
 
-model Question {
-  id Int @id @default(autoincrement())
-  content String
-  pollId Int
-  poll Poll @relation(fields: [pollId], references: [id])
-
-  @@index([pollId])
+model User {
+  id         Int          @id @default(autoincrement())
+  name       String
+  surname    String
+  email      String
+  password   String
+  dni        Int
+  role       Role         @default(STUDENT)
+  Assistance Assistance[]
+  Course     Course[]
 }
 
-model Poll {
-  id Int @id @default(autoincrement())
-  questions Question[]
+model Course {
+  id          Int        @id @default(autoincrement())
+  name        String
+  students    User[]
+  userId      Int
+  professor   Professor? @relation(fields: [professorId], references: [id])
+  professorId Int?
+
+  @@index([professorId])
 }
+
+model Assistance {
+  id     Int      @id @default(autoincrement())
+  user   User     @relation(fields: [userId], references: [id])
+  date   DateTime
+  userId Int
+
+  @@index([userId])
+}
+
+// model Question {
+//   id      Int    @id @default(autoincrement())
+//   content String
+//   pollId  Int
+//   poll    Poll   @relation(fields: [pollId], references: [id])
+
+//   @@index([pollId])
+// }
+
+// model Poll {
+//   id        Int        @id @default(autoincrement())
+//   questions Question[]
+// }
 
 enum Role {
   STUDENT
-  TEACHER
+  ASSISTANT
 }

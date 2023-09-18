@@ -1,4 +1,15 @@
-export default function Page() {
+const getCourseData = async (id: string) => {
+  const res = await fetch(`/${id}`);
+  const datos = await res.json();
+
+  return datos;
+};
+
+export default async function Page({ params }: { params: { course: string } }) {
+  const course = await getCourseData(params.course as string);
+
+  console.log(course);
+
   return (
     <>
       <div className="overflow-x-auto">
